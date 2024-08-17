@@ -9,7 +9,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/*": {"origins": "http://localhost:4200"}})
+CORS(app, resources={r"/*": {"origins": ["http://localhost:4200", "https://adc-project-smoky.vercel.app/"]}})
 
 app.config["MONGO_URI"] = "mongodb+srv://test_user:test_password@cluster0.veky3vx.mongodb.net/adcore"
 mongo = PyMongo(app)
