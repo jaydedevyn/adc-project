@@ -91,7 +91,6 @@ export class CoursesComponent implements OnInit {
 
   async delete(id: string) {
     try {
-
       await this.courseService.delete(id);
       this.listCourses()
     } catch (err) {
