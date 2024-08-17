@@ -105,7 +105,6 @@ export class CoursesComponent implements OnInit {
         limit: this.limit,
         offset: this.offset
       });
-
       this.courses = response.courses;
       this.numOfCourses = response.count;
     } catch (err) {
