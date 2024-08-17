@@ -1,0 +1,71 @@
+<div class="courses-page">
+
+<div class="heading">
+  <button mat-flat-button color="primary" (click)="createCourse()">Add new course</button>
+    <mat-form-field >
+      <input type="text"
+             placeholder="Search..."
+             matInput
+             [formControl]="query"
+             >
+    </mat-form-field>
+</div>
+
+
+<div class="course-table">
+  <table mat-table [dataSource]="courses" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="course_name">
+      <th mat-header-cell *matHeaderCellDef> Course Name </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="edit(element._id)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="delete(element._id)"><mat-icon>delete</mat-icon></button>
+
+
+        {{element.name}}
+
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef> Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.country}}, {{element.city}}, {{element.university}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="start_date">
+      <th mat-header-cell *matHeaderCellDef> Start </th>
+      <td mat-cell *matCellDef="let element"> {{element.start_date | date:'YYYY-MM-dd'}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="length">
+      <th mat-header-cell *matHeaderCellDef> Length </th>
+      <td mat-cell *matCellDef="let element"> {{getCourseLength(element)}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.price | currency:element.currency:'symbol-narrow'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row [matTooltip]="row.description" *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [length]="numOfCourses"
+                 (page)="handlePageChange($event)"
+                 [pageSize]="limit"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 aria-label="Select page">
+  </mat-paginator>
+
+
+</div>
+</div>

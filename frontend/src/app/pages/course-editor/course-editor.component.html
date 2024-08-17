@@ -1,0 +1,90 @@
+<div class="course-editor-container">
+  <button mat-button routerLink="..">Back</button>
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+      <mat-card-title>Course Editor</mat-card-title>
+
+      <mat-card-content class="content">
+
+        <div class="form-group">
+          <label>Course Name</label>
+          <mat-form-field>
+            <input matInput placeholder="Enter course name" formControlName="name">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label>University</label>
+          <mat-form-field>
+            <input matInput placeholder="Enter university name" formControlName="university">
+
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <label>Country</label>
+          <mat-form-field>
+            <input matInput placeholder="Enter country" formControlName="country">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label>City</label>
+          <mat-form-field>
+            <input matInput placeholder="Enter city" formControlName="city" [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label>Price</label>
+          <div class="price">
+
+            <mat-form-field>
+              <mat-select formControlName="currency">
+                <mat-option value="CNY">¥</mat-option>
+                <mat-option value="PES">₽</mat-option>
+                <mat-option value="EUR">€</mat-option>
+                <mat-option value="USD">$</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="number" placeholder="Enter course price" formControlName="price">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startPicker" formControlName="start_date">
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="endPicker" formControlName="end_date">
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Course Description</mat-label>
+            <textarea matInput placeholder="Enter course description" formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+        <button mat-raised-button color="accent" type="button" (click)="onCancel()">Cancel</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
