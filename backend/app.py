@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "http://localhost:4200"}})
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/courses"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/adcore"
 mongo = PyMongo(app)
 course_collection = mongo.db.courses
 
