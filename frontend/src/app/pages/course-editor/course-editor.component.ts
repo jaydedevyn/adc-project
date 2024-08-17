@@ -58,7 +58,6 @@ export class CourseEditorComponent {
 
   ngOnInit(): void {
     const params = this.route.snapshot.queryParams;
-
     if (params['id']) {
       this.editMode = true;
       this.courseForm.get('name')?.disable()
