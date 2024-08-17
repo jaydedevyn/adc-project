@@ -1,4 +1,4 @@
-from flask import Flask,request, jsonify
+from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
 import requests
 import pandas as pd
@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "http://localhost:4200"}})
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/adcore"
+app.config["MONGO_URI"] = "mongodb+srv://test_user:test_password@cluster0.veky3vx.mongodb.net/adcore"
 mongo = PyMongo(app)
 course_collection = mongo.db.courses
 
